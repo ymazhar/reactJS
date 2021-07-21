@@ -1,5 +1,5 @@
-# reactJS
-ReactJS Global Mentoring Program
+# ReactJS Global Mentoring Program
+
 
 # Description
 This program covers not only React library but also the ecosystem of tools and libraries that surround React and give you the power to build real-world Web applications.
