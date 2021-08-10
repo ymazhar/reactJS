@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const path = require('path')
 module.exports = (env = {}) => {
     const { mode = 'development' } = env;
     const isProd = mode === 'production';
@@ -34,6 +35,7 @@ module.exports = (env = {}) => {
         output: {
             filename: isProd ? 'main-[hash:7].js' : undefined,
             clean: true,
+            path: path.resolve(__dirname, 'dist'),
         },
         module: {
             rules: [
@@ -50,7 +52,8 @@ module.exports = (env = {}) => {
                             loader: 'file-loader',
                             options: {
                                 outputPath: 'images',
-                                name: '[name]-[sha1:hash:7].[ext]'
+                                name: '[name]-[sha1:hash:7].[ext]',
+                                esModule: false,
                             }
                         }
                     ]
@@ -71,12 +74,29 @@ module.exports = (env = {}) => {
                 // Loading css
                 {
                     test: /\.(css)$/i,
-                    use: getStyleLoaders(),
+                    use: [...getStyleLoaders(),
+                        {
+                            loader: 'resolve-url-loader',
+                            options: {
+                                sourceMap: true
+                            }
+                        },
+                    ],
                 },
                 // Loading sass/scss
                 {
                     test: /\.((c|sa|sc)ss)$/i,
-                    use: [...getStyleLoaders(), 'sass-loader'],
+                    use: [...getStyleLoaders(), {
+                        loader: 'resolve-url-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    }, {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true,
+                        }
+                    }],
                 },
             ]
         },

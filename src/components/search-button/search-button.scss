@@ -1,0 +1,16 @@
+.search-button {
+  color: #fff;
+  background-color: #F75160;
+  border-radius: 5px;
+  text-transform: uppercase;
+  min-width: 230px;
+  padding: 10px 15px;
+  border: 0;
+  font-size: 20px;
+  cursor: pointer;
+  transition: opacity ease-in-out .3s;
+
+  &:hover {
+    opacity: .7;
+  }
+}

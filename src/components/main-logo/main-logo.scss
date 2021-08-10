@@ -1,0 +1,11 @@
+.main-logo {
+  position: relative;
+  display: inline-flex;
+  z-index: 1;
+
+  &__svg {
+    fill: #F75160;
+    width: 100px;
+    height: 27px
+  }
+}

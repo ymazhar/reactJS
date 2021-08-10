@@ -1,0 +1,13 @@
+.result-sort {
+  display: flex;
+  align-items: baseline;
+  white-space: nowrap;
+  color: #686868;
+  font-size: 18px;
+  text-transform: uppercase;
+
+  &__title {
+    display: block;
+    margin: 0 25px 0 0;
+  }
+}

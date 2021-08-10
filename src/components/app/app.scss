@@ -1,0 +1,18 @@
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #555;
+
+  &__main {
+    flex: 1;
+    background: #232323;
+    margin: 10px 0 0 ;
+  }
+}
+
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 55px;
+}
