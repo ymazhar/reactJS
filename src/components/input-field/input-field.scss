@@ -1,12 +1,26 @@
+@import "../../variables/colors";
+
 .input-field {
   width: 100%;
+  height: 50px;
   padding: 10px 15px;
-  color: #ffffff;
-  background: rgba(#444444, .5);
+  color: $white-color;
+  background: $gray-color;
   border-radius: 5px;
   border: 0;
 
   &::placeholder {
-    color: #62615c;
+    color: $light-gray-color;
   }
+
+  &-label {
+    text-transform: uppercase;
+    color: $orange-color;
+    display: block;
+    margin: 0 0 10px;
+  }
+}
+
+.input-field-wrapper {
+  margin-bottom: 30px;
 }

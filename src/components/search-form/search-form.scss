@@ -1,7 +1,8 @@
 .search-form {
   display: flex;
 
-  &__input {
-    margin: 0 20px 0 0;
+  .input-field-wrapper {
+    flex: 1;
+    margin: 0 30px 0 0;
   }
 }

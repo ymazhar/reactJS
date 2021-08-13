@@ -1,9 +1,10 @@
 import React from "react";
 import "./add-movie.scss";
 
-const AddMovie = () => {
+const AddMovie = ({onClick}) => {
+
     return (
-        <a href={"/"} className={"add-movie-link"}>add movie</a>
+        <a href={"/"} className={"add-movie-link"} onClick={onClick}>add movie</a>
     )
 }
 
