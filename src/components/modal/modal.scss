@@ -2,44 +2,46 @@
 
 .modal-overlay {
   position: fixed;
+  z-index: 3;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
-  z-index: 3;
-  background: rgba(0, 0, 0, .2);
+  left: 0;
   backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .modal {
   position: absolute;
   top: 7%;
   left: 50%;
-  bottom: 7%;
-  transform: translateX(-50%);
-  background-color: $dark-gray-color;
+  overflow: auto;
   width: 100%;
   max-width: 680px;
-  margin: 0 auto;
+  max-height: 84vh;
   padding: 30px;
-  overflow: auto;
+  margin: 0 auto;
+  background-color: $dark-gray-color;
+  color: $white-color;
+  transform: translateX(-50%);
 
   &__close-button {
     position: absolute;
-    right: 20px;
     top: 20px;
+    right: 20px;
     width: 32px;
     height: 32px;
     cursor: pointer;
 
-    &:before, &:after {
+    &:before,
+    &:after {
       position: absolute;
       top: 0;
       left: 15px;
-      content: ' ';
-      height: 33px;
       width: 2px;
+      height: 33px;
       background-color: $white-color;
+      content: " ";
     }
 
     &:before {
@@ -52,8 +54,8 @@
   }
 
   &__title {
-    text-transform: uppercase;
     color: $white-color;
+    text-transform: uppercase;
   }
 
   &__footer {

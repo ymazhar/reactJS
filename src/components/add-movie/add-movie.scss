@@ -1,24 +1,26 @@
+@import "../../variables/colors";
+
 .add-movie-link {
   position: relative;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #F75160;
-  padding: 10px 20px 10px 30px;
-  background: rgba(#444444, .5);
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 20px;
-  transition: background-color ease-in-out .3s;
   z-index: 1;
+  padding: 10px 20px 10px 30px;
+  background: rgba($light-gray-color, 0.5);
+  border-radius: 5px;
+  color: $orange-color;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color ease-in-out 0.3s;
 
-  &:before {
-    content: "\002B";
+  &::before {
     position: absolute;
-    left: 15px;
     top: 8px;
+    left: 15px;
+    content: "\002B";
   }
 
   &:hover {
-    background-color: rgba(#444444, .8);
+    background-color: rgba($light-gray-color, 0.8);
   }
 }

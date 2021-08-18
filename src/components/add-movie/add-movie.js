@@ -1,11 +1,14 @@
-import React from "react";
 import "./add-movie.scss";
 
-const AddMovie = ({onClick}) => {
-
-    return (
-        <a href={"/"} className={"add-movie-link"} onClick={onClick}>add movie</a>
-    )
-}
+const AddMovie = ({ onClick }) => (
+  <a
+    href={"/"}
+    className={"add-movie-link"}
+    onClick={onClick}
+    data-modal-id="addMovie"
+  >
+    add movie
+  </a>
+);
 
 export default AddMovie;

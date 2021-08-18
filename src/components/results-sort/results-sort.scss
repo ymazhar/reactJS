@@ -3,10 +3,10 @@
 .result-sort {
   display: flex;
   align-items: baseline;
-  white-space: nowrap;
   color: $light-gray-color;
   font-size: 18px;
   text-transform: uppercase;
+  white-space: nowrap;
 
   &__title {
     display: block;
@@ -17,36 +17,34 @@
     position: relative;
 
     select {
-      color: $white-color;
-      cursor: pointer;
-      border: 0;
-      background-color: transparent;
-      text-transform: uppercase;
       padding: 0 25px 0 0;
+      border: 0;
       /* for Firefox */
       -moz-appearance: none;
       /* for Chrome */
       -webkit-appearance: none;
+      background-color: transparent;
+      color: $white-color;
+      cursor: pointer;
+      text-transform: uppercase;
 
       &::-ms-expand {
         display: none;
       }
     }
   }
-
-
 }
 
 .icon-arrow-down {
-  content: "";
   position: absolute;
+  z-index: 1;
   top: 50%;
   right: 10px;
   width: 0;
   height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
   border-top: 6px solid $orange-color;
-  z-index: 1;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
   margin-top: -3px;
+  content: "";
 }

@@ -78,7 +78,8 @@ module.exports = (env = {}) => {
                         {
                             loader: 'resolve-url-loader',
                             options: {
-                                sourceMap: true
+                                sourceMap: true,
+                                removeCR: true
                             }
                         },
                     ],
@@ -89,7 +90,8 @@ module.exports = (env = {}) => {
                     use: [...getStyleLoaders(), {
                         loader: 'resolve-url-loader',
                         options: {
-                            sourceMap: true
+                            sourceMap: true,
+                            removeCR: true
                         }
                     }, {
                         loader: 'sass-loader',

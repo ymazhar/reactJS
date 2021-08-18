@@ -1,5 +1,12 @@
 .movie-item {
+  position: relative;
   max-width: 328px;
+
+  &:hover {
+    .movie-action-block__dots {
+      opacity: 1;
+    }
+  }
 
   &__content {
     display: flex;
@@ -8,55 +15,22 @@
   }
 
   &__release-date {
-    margin: 0 0 0 auto;
-    color: #999;
-    border: 1px solid #999;
-    border-radius: 3px;
     padding: 2px 8px;
+    border: 1px solid #999;
+    margin: 0 0 0 auto;
+    border-radius: 3px;
+    color: #999;
   }
 
   &__genre {
     width: 100%;
-    color: #6C6C6C;
     padding: 5px 0 0;
+    color: #6c6c6c;
   }
 
   &__title {
     color: #999999;
     font-size: 20px;
     font-weight: bold;
-  }
-
-  &__image {
-    position: relative;
-
-    &:hover {
-      .movie-item__dots {
-        opacity: 1;
-      }
-    }
-  }
-
-  &__dots {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #29202D;
-    color: #fff;
-    opacity: 0;
-    transition: opacity ease-in-out .3s;
-    cursor: pointer;
-
-    &:before {
-      content: "\00B7 \00B7 \00B7";
-      position: absolute;
-      top: 5px;
-      left: 8px;
-      transform: rotate(90deg);
-      font-size: 24px;
-    }
   }
 }

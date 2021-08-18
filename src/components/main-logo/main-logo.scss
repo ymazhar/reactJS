@@ -1,11 +1,13 @@
+@import "../../variables/colors";
+
 .main-logo {
   position: relative;
-  display: inline-flex;
   z-index: 4;
+  display: inline-flex;
 
   &__svg {
-    fill: #F75160;
     width: 100px;
-    height: 27px
+    height: 27px;
+    fill: $orange-color;
   }
 }
