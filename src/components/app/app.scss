@@ -1,0 +1,32 @@
+@import "../../variables/colors";
+
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: #555;
+
+  &__main {
+    flex: 1;
+    margin: 10px 0 0;
+    background: #232323;
+  }
+}
+
+.main-container {
+  max-width: 1200px;
+  padding: 0 55px;
+  margin: 0 auto;
+}
+
+.oops {
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  color: $white-color;
+}

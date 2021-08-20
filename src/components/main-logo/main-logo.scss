@@ -1,0 +1,13 @@
+@import "../../variables/colors";
+
+.main-logo {
+  position: relative;
+  z-index: 4;
+  display: inline-flex;
+
+  &__svg {
+    width: 100px;
+    height: 27px;
+    fill: $orange-color;
+  }
+}
