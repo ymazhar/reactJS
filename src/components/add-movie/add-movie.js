@@ -1,4 +1,5 @@
 import "./add-movie.scss";
+import PropTypes from "prop-types";
 
 const AddMovie = ({ onClick }) => (
   <a
@@ -10,5 +11,13 @@ const AddMovie = ({ onClick }) => (
     add movie
   </a>
 );
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func,
+};
+
+AddMovie.defaultProps = {
+  onClick: () => {},
+};
 
 export default AddMovie;

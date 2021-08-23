@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./label.scss";
 
 const Label = ({ id, children }) => (
@@ -5,5 +6,18 @@ const Label = ({ id, children }) => (
     {children}
   </label>
 );
+
+Label.propTypes = {
+  id: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+}
+
+Label.defaultProps = {
+  id: "",
+  children: {}
+}
 
 export default Label;

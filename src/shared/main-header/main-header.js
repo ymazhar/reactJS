@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./main-header.scss";
 import MainLogo from "../../components/main-logo";
 import AddMovie from "../../components/add-movie";
@@ -14,5 +15,13 @@ const MainHeader = ({ toggleAddMovieModal }) => {
     </header>
   );
 };
+
+MainHeader.propTypes = {
+    toggleAddMovieModal: PropTypes.func
+}
+
+MainHeader.propTypes = {
+    toggleAddMovieModal: () => {}
+}
 
 export default MainHeader;

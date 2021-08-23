@@ -15,7 +15,7 @@ const MovieList = ({ movies, movieActionBox, onClick }) => {
   return <div className={"movie-list"}>{list}</div>;
 };
 
-MovieList.proptypes = {
+MovieList.propTypes = {
   movies: PropTypes.array,
   movieActionBox: PropTypes.object,
   onClick: PropTypes.func,

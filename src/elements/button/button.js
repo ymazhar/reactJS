@@ -14,7 +14,10 @@ const Button = ({ children, onClick, inverted }) => {
 };
 
 Button.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
   onClick: PropTypes.func,
   inverted: PropTypes.bool,
 };

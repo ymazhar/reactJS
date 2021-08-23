@@ -36,6 +36,18 @@ MovieItem.propTypes = {
   releaseDate: PropTypes.string,
   genre: PropTypes.string,
   id: PropTypes.string,
+  movieActionBox: PropTypes.object,
+  onClick: PropTypes.func,
 };
+
+MovieItem.defultProps = {
+  image: {},
+  title: '',
+  releaseDate: '',
+  genre: '',
+  id: '',
+  movieActionBox: {},
+  onClick: () => {},
+}
 
 export default MovieItem;
