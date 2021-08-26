@@ -2,6 +2,7 @@
   position: relative;
   height: 100%;
   min-height: 397px;
+  padding: 110px 0 60px;
   background-image: url("./hero-image.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -17,5 +18,9 @@
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     background: rgba(0, 0, 0, 0.2);
+
+    .hero-image--dark-blur & {
+      background: rgba(0, 0, 0, 0.8);
+    }
   }
 }

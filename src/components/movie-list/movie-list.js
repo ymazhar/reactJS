@@ -1,29 +1,30 @@
 import MovieItem from "../movie-item";
 import "./movie-list.scss";
 import PropTypes from "prop-types";
+import {useMemo} from "react";
 
-const MovieList = ({ movies, movieActionBox, onClick }) => {
-  const list = movies.map((movie) => (
-    <MovieItem
-      key={movie.id}
-      id={movie.id}
-      {...movie}
-      movieActionBox={movieActionBox}
-      onClick={onClick}
-    />
-  ));
+const MovieList = ({ movies, onClick, ...restProps }) => {
+  const list = useMemo(() => movies.map((movie) => {
+    return (
+        <MovieItem
+            key={movie.id}
+            id={movie.id}
+            onClick={onClick}
+            {...movie}
+            {...restProps}
+        />
+    )
+  }),[movies]);
   return <div className={"movie-list"}>{list}</div>;
 };
 
 MovieList.propTypes = {
   movies: PropTypes.array,
-  movieActionBox: PropTypes.object,
   onClick: PropTypes.func,
 };
 
 MovieList.defaultProps = {
   movies: [],
-  movieActionBox: {},
   onClick: () => {},
 };
 export default MovieList;

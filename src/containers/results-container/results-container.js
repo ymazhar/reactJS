@@ -4,7 +4,8 @@ import ResultsFilter from "../../components/results-filter";
 import ResultsSort from "../../components/results-sort";
 import ResultCount from "../../components/result-count";
 
-const ResultsContainer = ({filters, movies}) => {
+const ResultsContainer = ({filters}) => {
+
     return (
         <div className={"results-container"}>
             <div className="results-container__row results-container__row--filter">
@@ -12,7 +13,7 @@ const ResultsContainer = ({filters, movies}) => {
                 <ResultsSort/>
             </div>
             <div className="results-container__row">
-                <ResultCount count={movies.length}/>
+                <ResultCount />
             </div>
         </div>
     );
@@ -20,12 +21,10 @@ const ResultsContainer = ({filters, movies}) => {
 
 ResultsContainer.propTypes = {
     filters: PropTypes.array,
-    movies: PropTypes.array
 }
 
 ResultsContainer.defaultProps = {
     filters: [],
-    movies: [],
 }
 
 export default ResultsContainer;
