@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import ResultsFilterItem from "../results-filter-item";
 import "./results-filter.scss";
 
@@ -7,5 +8,13 @@ const ResultsFilter = ({ items }) => {
   ));
   return <div className={"results-filter"}>{results}</div>;
 };
+
+ResultsFilter.propTypes = {
+  items: PropTypes.array
+}
+
+ResultsFilter.defaultProps = {
+  items: []
+}
 
 export default ResultsFilter;

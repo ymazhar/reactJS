@@ -4,6 +4,7 @@ import InputField from "../../elements/input-field";
 import SelectField from "../../elements/select-field";
 
 import "./movie-form.scss";
+import PropTypes from "prop-types";
 
 const MovieForm = ({ form, handleInputChange }) => {
   const {
@@ -92,6 +93,16 @@ const MovieForm = ({ form, handleInputChange }) => {
       </FormControl>
     </form>
   );
+};
+
+MovieForm.propTypes = {
+    form: PropTypes.object,
+    handleInputChange: PropTypes.func,
+};
+
+MovieForm.defaultProps = {
+    form: {},
+    handleInputChange: () => {},
 };
 
 export default MovieForm;

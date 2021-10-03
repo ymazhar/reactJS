@@ -1,12 +1,9 @@
 .hero-container {
   position: relative;
   &__holder {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    max-width: 1070px;
-    padding: 110px 55px 0;
+    position: relative;
+    z-index: 2;
+    max-width: 960px;
     margin: 0 auto;
   }
 }

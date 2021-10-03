@@ -1,4 +1,5 @@
 import { Component } from "react";
+import PropTypes from "prop-types";
 
 class ErrorBoundary extends Component {
   state = { error: null, errorInfo: null, hasError: false };
@@ -24,5 +25,16 @@ class ErrorBoundary extends Component {
     return <>{hasError ? oops() : children}</>;
   }
 }
+
+ErrorBoundary.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
+};
+
+ErrorBoundary.defaultProps = {
+  children: {},
+};
 
 export default ErrorBoundary;

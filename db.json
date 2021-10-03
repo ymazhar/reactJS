@@ -1,0 +1,83 @@
+{
+  "movies": [
+    {
+      "image": {
+        "src": "https://via.placeholder.com/328x458",
+        "alt": "placeholder"
+      },
+      "title": "Pulp Fiction",
+      "releaseDate": "2004-08-31",
+      "genre": "Action & Adventure",
+      "id": "MO32820TH",
+      "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur autem consequatur cum, doloribus enim ex hic id incidunt inventore ipsam, iure nihil nostrum odit quasi recusandae repudiandae totam unde ut.",
+      "runtime": "154 min",
+      "rating": "4.3"
+    },
+    {
+      "image": {
+        "src": "https://via.placeholder.com/328x458",
+        "alt": "placeholder"
+      },
+      "title": "Pulp Fiction 2",
+      "releaseDate": "2004-08-31",
+      "genre": "comedy",
+      "id": "MO32821TH",
+      "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur autem consequatur cum, doloribus enim ex hic id incidunt inventore ipsam, iure nihil nostrum odit quasi recusandae repudiandae totam unde ut.",
+      "runtime": "140 min",
+      "rating": "5.0"
+    },
+    {
+      "image": {
+        "src": "https://via.placeholder.com/328x458",
+        "alt": "placeholder"
+      },
+      "title": "Pulp Fiction 3",
+      "releaseDate": "2004-08-31",
+      "genre": "Action & Adventure",
+      "id": "MO32822TH",
+      "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur autem consequatur cum, doloribus enim ex hic id incidunt inventore ipsam, iure nihil nostrum odit quasi recusandae repudiandae totam unde ut.",
+      "runtime": "154 min",
+      "rating": "4.3"
+    },
+    {
+      "image": {
+        "src": "https://via.placeholder.com/328x458",
+        "alt": "placeholder"
+      },
+      "title": "Pulp Fiction 4",
+      "releaseDate": "2004-08-31",
+      "genre": "Action & Adventure",
+      "id": "MO32823TH",
+      "overview": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur autem consequatur cum, doloribus enim ex hic id incidunt inventore ipsam, iure nihil nostrum odit quasi recusandae repudiandae totam unde ut.",
+      "runtime": "120 min",
+      "rating": "4.3"
+    }
+  ],
+  "filters": [
+    {
+      "title": "All",
+      "link": "/",
+      "active": true
+    },
+    {
+      "title": "Documentary",
+      "link": "/documentary",
+      "active": false
+    },
+    {
+      "title": "Comedy",
+      "link": "/link",
+      "active": false
+    },
+    {
+      "title": "Horror",
+      "link": "/horror",
+      "active": false
+    },
+    {
+      "title": "Crime",
+      "link": "/crime",
+      "active": false
+    }
+  ]
+}

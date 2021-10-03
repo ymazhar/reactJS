@@ -1,6 +1,7 @@
 .movie-item {
   position: relative;
   max-width: 328px;
+  cursor: pointer;
 
   &:hover {
     .movie-action-block__dots {

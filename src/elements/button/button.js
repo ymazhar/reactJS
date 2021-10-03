@@ -1,11 +1,16 @@
 import PropTypes from "prop-types";
+import classNames from "classnames";
 
 import "./button.scss";
 
-const Button = ({ children, onClick, inverted }) => {
+const Button = ({ children, onClick, secondary, primary, className }) => {
+  const classes = classNames('button', className, {
+    "button-primary" : primary,
+    "button-secondary" : secondary,
+  })
   return (
     <button
-      className={`button button--primary ${inverted ? "button--inverted" : ""}`}
+      className={classes}
       onClick={onClick}
     >
       {children}
@@ -14,15 +19,22 @@ const Button = ({ children, onClick, inverted }) => {
 };
 
 Button.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
   onClick: PropTypes.func,
-  inverted: PropTypes.bool,
+  secondary: PropTypes.bool,
+  primary: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 Button.defaultTypes = {
-  children: "Button",
+  children: '',
   onClick: () => {},
-  inverted: false,
+  secondary: false,
+  primary: false,
+  className: '',
 };
 
 export default Button;

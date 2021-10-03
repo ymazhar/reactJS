@@ -1,15 +1,14 @@
+@import "../../variables/colors";
 .search-button {
-  min-width: 230px;
-  padding: 10px 15px;
-  border: 0;
-  background-color: #f75160;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-  font-size: 20px;
-  text-transform: uppercase;
-  transition: opacity ease-in-out 0.3s;
-
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  .search-icon {
+    width: 30px;
+    height: 30px;
+    fill: $orange-color;
+    transform: rotate(90deg);
+  }
   &:hover {
     opacity: 0.7;
   }

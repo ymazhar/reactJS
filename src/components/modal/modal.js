@@ -1,4 +1,4 @@
-import Proptypes from "prop-types";
+import PropTypes from "prop-types";
 import "./modal.scss";
 
 const Modal = ({ title, isOpen, onClose, children, id }) => {
@@ -24,17 +24,21 @@ const Modal = ({ title, isOpen, onClose, children, id }) => {
 };
 
 Modal.propTypes = {
-  title: Proptypes.string,
-  isOpen: Proptypes.bool,
-  onCancel: Proptypes.func,
-  children: Proptypes.node,
-  id: Proptypes.string,
+  title: PropTypes.string,
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.func,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  id: PropTypes.string,
 };
 
 Modal.defaultProps = {
   title: "Modal title",
   isOpen: false,
-  onCancel: () => {},
+  onClose: () => {},
+  children: {},
   id: null,
 };
 

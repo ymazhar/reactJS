@@ -1,0 +1,46 @@
+@import "../../variables/colors";
+
+.movie-detail-info {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  color: rgba($white-color, 0.5);
+  font-size: 18px;
+  font-weight: 300;
+  &__content {
+    padding: 0 60px;
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    margin: 25px 0 5px;
+    color: $white-color;
+    font-size: 54px;
+    font-weight: 300;
+  }
+
+  &__rating {
+    display: inline-flex;
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $white-color;
+    margin: 0 20px;
+    border-radius: 50%;
+    color: $green-color;
+    font-size: 30px;
+  }
+
+  &__time {
+    display: flex;
+    color: $orange-color;
+    &__item {
+      margin: 25px 20px;
+    }
+    &__item:first-child {
+      margin-left: 0;
+    }
+  }
+}
