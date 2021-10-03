@@ -2,14 +2,13 @@ import "./add-movie.scss";
 import PropTypes from "prop-types";
 
 const AddMovie = ({ onClick }) => (
-  <a
-    href={"/"}
+  <button
     className={"add-movie-link"}
     onClick={onClick}
     data-modal-id="addMovie"
   >
     add movie
-  </a>
+  </button>
 );
 
 AddMovie.propTypes = {

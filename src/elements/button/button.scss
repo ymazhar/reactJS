@@ -6,6 +6,13 @@
   background: transparent;
   cursor: pointer;
 
+  &:disabled {
+    border-color: $light-gray-color;
+    background: $light-gray-color;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
   &-primary {
     min-width: 230px;
     padding: 12px 10px 11px;

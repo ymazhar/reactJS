@@ -37,13 +37,13 @@ const MovieActionBlock = ({id, handleEditMovieClick, handleDeleteMovieClick}) =>
 };
 
 MovieActionBlock.propTypes = {
-    id: PropTypes.string,
+    id: PropTypes.number,
     handleEditMovieClick: PropTypes.func,
     handleDeleteMovieClick: PropTypes.func,
 }
 
 MovieActionBlock.defaultProps = {
-    id: '',
+    id: null,
     handleEditMovieClick: () => {},
     handleDeleteMovieClick: () => {},
 }

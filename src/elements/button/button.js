@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import "./button.scss";
 
-const Button = ({ children, onClick, secondary, primary, className }) => {
+const Button = ({ children, onClick, secondary, primary, className, disabled }) => {
   const classes = classNames('button', className, {
     "button-primary" : primary,
     "button-secondary" : secondary,
@@ -12,6 +12,7 @@ const Button = ({ children, onClick, secondary, primary, className }) => {
     <button
       className={classes}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>
@@ -27,6 +28,7 @@ Button.propTypes = {
   secondary: PropTypes.bool,
   primary: PropTypes.bool,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 Button.defaultTypes = {
