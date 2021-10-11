@@ -1,23 +1,33 @@
 import "./movies-container.scss";
 import MovieList from "../../components/movie-list";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import Spinner from "../../components/spinner";
 import ErrorIndicator from "../../components/errorIndicator";
 import MoviesCount from "../../components/movies-count";
 import {
     setDeleteMovieId,
     setEditMovieId,
-    showEditMoviePage,
+} from "../../actions/moviesActions";
+import {
     showModalDeleteMovie,
     showModalEditMovie
-} from "../../actions";
+} from "../../actions/modalActions"
+import {
+    errorSelector,
+    getLoadingStateSelector,
+    getMoviesSelector,
+    getMoviesTotalCountSelector
+} from "../../selectors/movieSelectors";
+import NoMovieFound from "../../components/no-movie-found";
+import {useHistory} from "react-router";
 
 const MoviesContainer = () => {
     const dispatch = useDispatch();
-    const movies = useSelector(({movies}) => movies);
-    const loading = useSelector(({loading}) => loading);
-    const error = useSelector(({error}) => error);
-    const {totalAmount, data} = movies;
+    const movies = getMoviesSelector();
+    const loading = getLoadingStateSelector();
+    const error = errorSelector();
+    const totalAmount = getMoviesTotalCountSelector();
+    let history = useHistory();
 
     const handleEditMovieClick = (id) => {
         dispatch(setEditMovieId(id));
@@ -29,13 +39,8 @@ const MoviesContainer = () => {
         dispatch(showModalDeleteMovie())
     }
 
-    const handleMovieItemClick = (e) => {
-        const movieId = Number(e.target.closest('.movie-item').id);
-        const {data} = movies;
-        const movie = data.find((item) => {
-            return item && item.id === movieId
-        });
-        dispatch(showEditMoviePage(movie))
+    const handleMovieItemClick = (id) => {
+        history.push(`/film/${id}`)
     }
 
     if (loading) {
@@ -45,11 +50,15 @@ const MoviesContainer = () => {
         return <ErrorIndicator/>
     }
 
+    if(!movies) {
+        return <NoMovieFound/>
+    }
+
     return (
         <>
             <MoviesCount count={totalAmount}/>
             <MovieList
-                movies={data}
+                movies={movies}
                 handleDeleteMovieClick={handleDeleteMovieClick}
                 handleEditMovieClick={handleEditMovieClick}
                 onClick={handleMovieItemClick}/>

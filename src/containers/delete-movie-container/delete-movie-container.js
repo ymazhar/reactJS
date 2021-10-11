@@ -1,35 +1,29 @@
 import ModalContainer from "../modal-container";
 import Button from "../../elements/button";
-import {getMoviesError, getMoviesSuccess, hideModalDeleteMovie} from "../../actions";
-import {useDispatch, useSelector} from "react-redux";
-import {useContext} from "react";
-import MoviesServiceContext from "../../components/movies-service-context";
+import {hideModalDeleteMovie} from "../../actions/modalActions";
+import {useDispatch} from "react-redux";
+import {getDeleteModalSelector} from "../../selectors/modalSelectors";
+import {getDeleteMovieIdSelector} from "../../selectors/movieSelectors";
+import {deleteMovie} from "../../actions/moviesActions";
 
 const DeleteMovieContainer = () => {
     const dispatch = useDispatch();
-    const movieService = useContext(MoviesServiceContext);
-    const modals = useSelector(({modals}) => modals);
-    const {deleteMovie} = modals;
-    const deleteMovieId = useSelector(({deleteMovieId}) => deleteMovieId);
+    const deleteMovieModal = getDeleteModalSelector();
+    const deleteMovieId = getDeleteMovieIdSelector();
     const onClose = () => {
         dispatch(hideModalDeleteMovie());
     }
     const handleConfirm = () => {
-        movieService.deleteMovieById(deleteMovieId)
-            .then(() => {
-                movieService.getMovies()
-                    .then(data => dispatch(getMoviesSuccess(data)))
-                    .catch(error => dispatch(getMoviesError(error)))
-            });
+        dispatch(deleteMovie(deleteMovieId))
     }
 
     return (
         <>
             <ModalContainer
-                title={deleteMovie.title}
-                isOpen={deleteMovie.isOpen}
+                title={deleteMovieModal.title}
+                isOpen={deleteMovieModal.isOpen}
                 onClose={onClose}
-                id={deleteMovie.id}>
+                id={deleteMovieModal.id}>
                 <div className="modal__body">
                     <p>Are you sure you want to delete this movie?</p>
                 </div>

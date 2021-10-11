@@ -15,16 +15,29 @@ import AddMovieContainer from "../containers/add-movie-container";
 import EditMovieContainer from "../containers/edit-movie-container";
 import DeleteMovieContainer from "../containers/delete-movie-container";
 import SearchContainer from "../containers/search-container";
+import {useLocation, useParams} from "react-router-dom";
+import {useEffect} from "react";
+import {searchMovies} from "../actions/moviesActions";
 
-const HomePage = () => {
+const SearchPage = () => {
     const dispatch = useDispatch();
-
+    const location = useLocation();
+    const params = useParams();
+    const search = location.search;
+    console.log(params);
+    useEffect(() => {
+        const query = search.split('=');
+        dispatch(searchMovies(query[1]))
+    }, [search])
     const handleOpenModal = () => dispatch(showModalAddMovie());
+
     return (
         <div className="site">
             <MainHeader>
                 <MainLogo/>
                 <AddMovie onClick={handleOpenModal}/>
+
+
             </MainHeader>
             <HeroContainer>
                 <div className={"hero-container__holder"}>
@@ -48,4 +61,4 @@ const HomePage = () => {
     )
 }
 
-export default HomePage;
+export default SearchPage;

@@ -1,10 +1,20 @@
-import {createStore, applyMiddleware} from "redux";
-import thunk from 'redux-thunk';
-import {composeWithDevTools} from "redux-devtools-extension";
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-import reducer from "./reducers";
+import { movieReducer, modalReducer, filterReducer } from "./reducers";
 
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
+const store = createStore(
+  combineReducers({
+    movies: movieReducer,
+    filter: filterReducer,
+    modal: modalReducer,
+  }),
+  composeWithDevTools(applyMiddleware(thunk))
+);
+
+store.subscribe(() => {
+  console.log("Store updated!", store.getState());
+});
 
 export default store;
-

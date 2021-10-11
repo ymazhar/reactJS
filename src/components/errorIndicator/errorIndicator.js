@@ -1,11 +1,6 @@
 import './errorIndicator.scss';
-import {useSelector} from "react-redux";
+import {errorSelector} from "../../selectors/movieSelectors";
 
-const ErrorIndicator = () => {
-    const error = useSelector(({error}) => error);
-    return (
-        <div className="error-indicator">{error}</div>
-    )
-}
+const ErrorIndicator = () => <div className="error-indicator">{errorSelector()}</div>;
 
 export default ErrorIndicator;

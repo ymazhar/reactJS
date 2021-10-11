@@ -1,69 +1,36 @@
-export const API = 'http://localhost:4000/movies'
-export default class MoviesService {
-    async getMovies() {
-       const response = await fetch(API);
-       return await response.json();
-    }
+import * as axios from "axios";
 
-    async getMoviesWithParams(params) {
-        const response = await fetch(`${API}?${params}`);
-        if (!response.ok) {
-            const message = `An error has occurred: ${response.status}`;
-            throw new Error(message);
-        }
-        return await response.json();
-    }
+const moviesInstance = axios.create({
+    baseURL: 'http://localhost:4000/',
+});
 
-    async addMovie(movie) {
-        const response = await fetch(API, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify(movie)
-        })
-        if (!response.ok) {
-            const message = `An error has occurred: ${response.status}`;
-            throw new Error(message);
-        }
-        return await response.json();
-    }
 
-    async getMovieById(id) {
-        const response = await fetch(`${API}/${id}`)
-        if (!response.ok) {
-            const message = `An error has occurred: ${response.status}`;
-            throw new Error(message);
-        }
-        return await response.json();
-    }
-
-    async updateMovieById(movie) {
-        const response = await fetch(API, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify(movie)
-        })
-        if (!response.ok) {
-            const message = `An error has occurred: ${response.status}`;
-            throw new Error(message);
-        }
-        return await response.json();
-    }
-
-    async deleteMovieById(id) {
-        const response = await fetch(`${API}/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            }
-        })
-        if (!response.ok) {
-            const message = `An error has occurred: ${response.status}`;
-            throw new Error(message);
-        }
-        return response;
+export const moviesAPI = {
+    getMovies() {
+        return moviesInstance.get("movies")
+    },
+    search(query) {
+        return moviesInstance.get("movies", {params: {search: query}})
+    },
+    searchBy(query) {
+        return moviesInstance.get("movies", {params: {searchBy: query}})
+    },
+    sortBy(query) {
+        return moviesInstance.get("movies", {params: {sortBy: query}})
+    },
+    getMoviesByGenres(query){
+        return moviesInstance.get("movies", {params: {filter: query}})
+    },
+    addMovie(movie) {
+        return moviesInstance.post("movies", movie)
+    },
+    getMovieById(id) {
+        return moviesInstance.get(`movies/${id}`)
+    },
+    updateMovie(movie) {
+        return moviesInstance.put(`movies/`, movie)
+    },
+    deleteMovie(id) {
+        return moviesInstance.delete(`movies/${id}`)
     }
 }

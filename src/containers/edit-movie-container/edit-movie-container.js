@@ -1,39 +1,22 @@
 import MovieForm from "../../components/movie-form";
-import {useDispatch, useSelector} from "react-redux";
-import {useContext, useEffect, useState} from "react";
-import MoviesServiceContext from "../../components/movies-service-context";
-import {getMoviesError, getMoviesSuccess, hideModalEditMovie, removeEditMovieId} from "../../actions";
+import {useDispatch} from "react-redux";
+import {getMovieById, removeEditMovieId, updateMovie} from "../../actions/moviesActions";
+import {hideModalEditMovie} from "../../actions/modalActions";
 import ModalContainer from "../modal-container";
 import {withFormik} from "formik";
 import {MovieFormShemas} from "../../shemas/movieFormShemas";
+import {getEditModalSelector} from "../../selectors/modalSelectors";
 
 const EditMovieContainer = () => {
     const dispatch = useDispatch();
-    const movieService = useContext(MoviesServiceContext);
-    const modals = useSelector(({modals}) => modals);
-    const {editMovie} = modals;
-    const editMovieId = useSelector(({editMovieId}) => editMovieId);
-    const [movie, setMovie] = useState({});
+    const editMovie = getEditModalSelector();
+    const movie = getMovieById();
 
     const onClose = () => {
         dispatch(hideModalEditMovie());
         dispatch(removeEditMovieId());
     }
 
-    useEffect(() => {
-        if(!editMovieId) {
-            return;
-        }
-        movieService.getMovieById(editMovieId)
-            .then(movie => setEditMovieValues(movie));
-    }, [editMovieId])
-
-    const setEditMovieValues = (movie) => {
-
-        const options = movie.genres.map(genre => ({label: genre, value: genre}));
-
-        setMovie({...movie, genres: options })
-    }
     const formikEnhancer = withFormik({
         validationSchema: MovieFormShemas,
         mapPropsToValues: () => movie,
@@ -44,12 +27,7 @@ const EditMovieContainer = () => {
                 genres: values.genres.map(t => t.value),
             };
 
-            movieService.updateMovieById(payload)
-                .then(() => {
-                    movieService.getMovies()
-                        .then(data => dispatch(getMoviesSuccess(data)))
-                        .catch(error => dispatch(getMoviesError(error)))
-                });
+            dispatch(updateMovie(payload));
         },
     })
 

@@ -1,35 +1,43 @@
 import MainHeader from "../shared/main-header";
 import MainLogo from "../components/main-logo";
-import AddMovie from "../components/add-movie";
 import HeroContainer from "../containers/hero-container";
 import MainBody from "../shared/main-body";
 import MainFooter from "../shared/main-footer";
-import Title from "../elements/title";
 import MoviesContainer from "../containers/movies-container";
 import ResultsContainer from "../containers/results-container";
 import {useDispatch} from "react-redux";
-import {
-    showModalAddMovie,
-} from "../actions/modalActions";
 import AddMovieContainer from "../containers/add-movie-container";
 import EditMovieContainer from "../containers/edit-movie-container";
 import DeleteMovieContainer from "../containers/delete-movie-container";
-import SearchContainer from "../containers/search-container";
+import MovieDetailInfo from "../components/movie-detail-info";
+import {useHistory, useParams} from "react-router";
+import {useEffect} from "react";
+import {fetchMovieById} from "../actions/moviesActions";
+import {getFilmItemSelector} from "../selectors/movieSelectors";
+import SearchButton from "../components/search-button";
 
-const HomePage = () => {
+const FilmPage = () => {
     const dispatch = useDispatch();
+    const {id} = useParams();
+    const history = useHistory();
+    const movieItem = getFilmItemSelector();
 
-    const handleOpenModal = () => dispatch(showModalAddMovie());
+    useEffect(() => {
+        dispatch(fetchMovieById(+id))
+    }, [id])
+
+    const handleSearchButtonClick = () => {
+        history.push('/');
+    }
     return (
         <div className="site">
             <MainHeader>
                 <MainLogo/>
-                <AddMovie onClick={handleOpenModal}/>
+                <SearchButton onClick={handleSearchButtonClick}/>
             </MainHeader>
-            <HeroContainer>
+            <HeroContainer darkBlur>
                 <div className={"hero-container__holder"}>
-                    <Title text={"Find your movie"}/>
-                    <SearchContainer />
+                    {movieItem ? <MovieDetailInfo movie={movieItem}/> : {}}
                 </div>
             </HeroContainer>
             <MainBody>
@@ -48,4 +56,4 @@ const HomePage = () => {
     )
 }
 
-export default HomePage;
+export default FilmPage;

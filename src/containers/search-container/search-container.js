@@ -1,21 +1,15 @@
 import SearchForm from "../../components/search-form";
 import {useFormik} from "formik";
-import {useContext} from "react";
-import {useDispatch} from "react-redux";
-import MoviesServiceContext from "../../components/movies-service-context";
-import {getMoviesError, getMoviesSuccess} from "../../actions";
+import {useHistory} from "react-router";
 
 const SearchContainer = () => {
-    const dispatch = useDispatch();
-    const movieService = useContext(MoviesServiceContext);
+    const history = useHistory();
     const formik = useFormik({
         initialValues: {
             query: '',
         },
-        onSubmit: values => {
-            movieService.getMoviesWithParams(`search=${values.query}`)
-                .then(data => dispatch(getMoviesSuccess(data)))
-                .catch(error => dispatch(getMoviesError(error)))
+        onSubmit: (values) => {
+            history.push(`/search/?search=${values.query}`)
         },
     });
 

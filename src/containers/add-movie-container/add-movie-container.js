@@ -1,17 +1,16 @@
 import ModalContainer from "../modal-container";
-import {useDispatch, useSelector} from "react-redux";
-import {getMoviesError, getMoviesSuccess, hideModalAddMovie} from "../../actions";
-import MoviesServiceContext from "../../components/movies-service-context";
-import {useContext} from "react";
+import {useDispatch} from "react-redux";
+import {getMoviesError, getMoviesSuccess} from "../../actions/moviesActions";
+import {hideModalAddMovie} from "../../actions/modalActions";
 import {withFormik} from "formik";
 import MovieForm from "../../components/movie-form";
 import {MovieFormShemas} from "../../shemas/movieFormShemas";
+import {getAddModalSelector} from "../../selectors/modalSelectors";
+import {moviesAPI} from "../../services/movie-service";
 
 const AddMovieContainer = () => {
     const dispatch = useDispatch();
-    const movieService = useContext(MoviesServiceContext);
-    const modals = useSelector(({modals}) => modals);
-    const {addMovie} = modals;
+    const addMovie = getAddModalSelector();
 
     const onClose = () => {
         dispatch(hideModalAddMovie());
@@ -36,9 +35,9 @@ const AddMovieContainer = () => {
             };
 
             delete payload.id;
-            movieService.addMovie(payload)
+            moviesAPI.addMovie(payload)
                 .then(() => {
-                    movieService.getMovies()
+                    moviesAPI.getMovies()
                         .then(data => dispatch(getMoviesSuccess(data)))
                         .catch(error => dispatch(getMoviesError(error)))
                 });

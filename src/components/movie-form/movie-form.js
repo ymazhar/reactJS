@@ -4,9 +4,9 @@ import InputField from "../../elements/input-field";
 import SelectField from "../../elements/select-field";
 import "./movie-form.scss";
 import PropTypes from "prop-types";
-import {useSelector} from "react-redux";
 import Button from "../../elements/button";
 import InputError from "../../elements/input-error";
+import {getMovieFormSelector} from "../../selectors/movieSelectors";
 
 const MovieForm = ({
                        edit,
@@ -22,7 +22,7 @@ const MovieForm = ({
                        dirty,
                        isSubmitting,
                    }) => {
-    const movieForm = useSelector(({forms}) => forms.movieForm);
+    const movieForm = getMovieFormSelector();
     const {id, title, release_date, poster_path, genres, overview, runtime} = movieForm;
 
     const handleGenresChange = value => {

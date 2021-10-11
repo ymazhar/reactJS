@@ -13,7 +13,7 @@ const MovieItem = ({
                    }) => {
     return (
             <div className="movie-item" id={id}>
-                <div className={"movie-item__image"} onClick={onClick}>
+                <div className={"movie-item__image"} onClick={() => onClick(id)}>
                     <picture>
                         <source srcSet={poster_path} />
                         <img src='https://via.placeholder.com/328x458' alt={title}/>
