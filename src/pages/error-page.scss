@@ -1,0 +1,13 @@
+@import "../variables/colors";
+
+.error-page {
+  padding: 100px 40px;
+  color: $white-color;
+
+  &__holder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

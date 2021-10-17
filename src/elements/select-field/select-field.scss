@@ -8,18 +8,38 @@
 .select-field {
   width: 100%;
   height: 50px;
-  padding: 10px 30px 10px 15px;
   border: 0;
   /* for Firefox */
   -moz-appearance: none;
   /* for Chrome */
   -webkit-appearance: none;
-  background-color: transparent;
+  background: $gray-color;
+  border-radius: 5px;
   color: $white-color;
   cursor: pointer;
-  font-size: 18px;
 
   &::-ms-expand {
     display: none;
+  }
+
+  &__control {
+    display: flex;
+    height: 100%;
+  }
+
+   & &__placeholder {
+    color: $light-gray-color;
+  }
+
+  & &__value-container {
+    padding: 10px 15px;
+  }
+
+  & &__menu {
+    background-color: $gray-color;
+  }
+
+  & &__option {
+    padding: 10px;
   }
 }

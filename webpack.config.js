@@ -32,10 +32,12 @@ module.exports = (env = {}) => {
 
     return {
         mode,
+        // entry: ['./main.js'],
         output: {
-            filename: isProd ? 'main-[hash:7].js' : undefined,
+            publicPath: '/',
+            filename: isProd ? 'main-[hash:7].js' : 'main.js',
             clean: true,
-            path: path.resolve(__dirname, 'dist'),
+            path: path.resolve(__dirname, 'public'),
         },
         module: {
             rules: [
@@ -103,7 +105,9 @@ module.exports = (env = {}) => {
             ]
         },
         plugins: getPlugins(),
+        devtool: 'source-map',
         devServer: {
+            historyApiFallback: true,
             open: true
         }
     }

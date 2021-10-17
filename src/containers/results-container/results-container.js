@@ -1,30 +1,46 @@
-import PropTypes from "prop-types";
 import "./results-container.scss";
-import ResultsFilter from "../../components/results-filter";
-import ResultsSort from "../../components/results-sort";
-import ResultCount from "../../components/result-count";
+import MoviesFilter from "../../components/movies-filter";
+import MoviesSort from "../../components/movies-sort";
+import {filterByGenres, sortByMovies} from "../../actions/moviesActions";
+import {useDispatch} from "react-redux";
+import {getActiveFilterSelector, getFiltersSelector, getSortByFilterSelector} from "../../selectors/filterSelectors";
 
-const ResultsContainer = ({filters}) => {
+const ResultsContainer = () => {
+    const dispatch = useDispatch();
+    const filters = getFiltersSelector();
+    const sortValue = getSortByFilterSelector();
+    const activeFilter = getActiveFilterSelector();
+
+
+    // const getParams = () => {
+    //     const sortParam = sortValue.toLowerCase();
+    //     const filterParam = activeFilter.toLowerCase();
+    //     if(activeFilter === 'All') {
+    //         return `sortBy=${sortParam}`;
+    //     }
+    //     return `sortBy=${sortParam}&filter=${filterParam}`
+    // }
+
+    const handleSortBy = (e) => {
+        if(!e.target.value) {
+            return
+        }
+        dispatch(sortByMovies(e.target.value))
+    }
+
+    const handleActiveFilter = (e) => {
+        if(!e.target.value) {
+            return
+        }
+        dispatch(filterByGenres(e.target.value))
+    }
 
     return (
         <div className={"results-container"}>
-            <div className="results-container__row results-container__row--filter">
-                <ResultsFilter items={filters}/>
-                <ResultsSort/>
-            </div>
-            <div className="results-container__row">
-                <ResultCount />
-            </div>
+            <MoviesFilter filters={filters} handleActiveFilter={handleActiveFilter} active={activeFilter}/>
+            <MoviesSort value={sortValue} handleOnChange={handleSortBy}/>
         </div>
     );
 };
-
-ResultsContainer.propTypes = {
-    filters: PropTypes.array,
-}
-
-ResultsContainer.defaultProps = {
-    filters: [],
-}
 
 export default ResultsContainer;
