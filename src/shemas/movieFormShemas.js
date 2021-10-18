@@ -4,8 +4,12 @@ const MovieFormShemas = () => (
     Yup.object().shape({
         id: Yup.number().required().positive().integer(),
         title: Yup.string().required(),
-        release_date: Yup.string(),
-        poster_path: Yup.string().required(),
+        release_date: Yup.string().required(),
+        poster_path: Yup.string().matches(
+            /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+            'Enter correct url!'
+        )
+            .required('Please enter website'),
         genres: Yup.array()
             .min(1, 'Pick at least 1 genre')
             .of(

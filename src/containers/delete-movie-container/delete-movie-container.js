@@ -5,6 +5,7 @@ import {useDispatch} from "react-redux";
 import {getDeleteModalSelector} from "../../selectors/modalSelectors";
 import {getDeleteMovieIdSelector} from "../../selectors/movieSelectors";
 import {deleteMovie} from "../../actions/moviesActions";
+import {useCallback} from "react";
 
 const DeleteMovieContainer = () => {
     const dispatch = useDispatch();
@@ -13,9 +14,9 @@ const DeleteMovieContainer = () => {
     const onClose = () => {
         dispatch(hideModalDeleteMovie());
     }
-    const handleConfirm = () => {
+    const handleConfirm = useCallback(() => {
         dispatch(deleteMovie(deleteMovieId))
-    }
+    }, [deleteMovieId])
 
     return (
         <>

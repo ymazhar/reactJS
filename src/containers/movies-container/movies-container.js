@@ -20,6 +20,7 @@ import {
 } from "../../selectors/movieSelectors";
 import NoMovieFound from "../../components/no-movie-found";
 import {useHistory} from "react-router";
+import {useCallback} from "react";
 
 const MoviesContainer = () => {
     const dispatch = useDispatch();
@@ -29,19 +30,19 @@ const MoviesContainer = () => {
     const totalAmount = getMoviesTotalCountSelector();
     let history = useHistory();
 
-    const handleEditMovieClick = (id) => {
+    const handleEditMovieClick = useCallback((id) => {
         dispatch(setEditMovieId(id));
         dispatch(showModalEditMovie());
-    }
+    }, [])
 
-    const handleDeleteMovieClick = (id) => {
+    const handleDeleteMovieClick = useCallback((id) => {
         dispatch(setDeleteMovieId(id));
         dispatch(showModalDeleteMovie())
-    }
+    }, [])
 
-    const handleMovieItemClick = (id) => {
+    const handleMovieItemClick = useCallback((id) => {
         history.push(`/film/${id}`)
-    }
+    }, [])
 
     if (loading) {
         return <Spinner/>

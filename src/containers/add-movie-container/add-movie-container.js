@@ -1,16 +1,15 @@
 import ModalContainer from "../modal-container";
 import {useDispatch} from "react-redux";
-import {getMoviesError, getMoviesSuccess} from "../../actions/moviesActions";
 import {hideModalAddMovie} from "../../actions/modalActions";
+import {addMovie} from "../../actions/moviesActions";
 import {withFormik} from "formik";
 import MovieForm from "../../components/movie-form";
 import {MovieFormShemas} from "../../shemas/movieFormShemas";
 import {getAddModalSelector} from "../../selectors/modalSelectors";
-import {moviesAPI} from "../../services/movie-service";
 
 const AddMovieContainer = () => {
     const dispatch = useDispatch();
-    const addMovie = getAddModalSelector();
+    const addMovieModal = getAddModalSelector();
 
     const onClose = () => {
         dispatch(hideModalAddMovie());
@@ -34,13 +33,7 @@ const AddMovieContainer = () => {
                 genres: values.genres.map(t => t.value),
             };
 
-            delete payload.id;
-            moviesAPI.addMovie(payload)
-                .then(() => {
-                    moviesAPI.getMovies()
-                        .then(data => dispatch(getMoviesSuccess(data)))
-                        .catch(error => dispatch(getMoviesError(error)))
-                });
+            dispatch(addMovie(payload))
         },
     })
 
@@ -49,10 +42,10 @@ const AddMovieContainer = () => {
     return (
         <>
             <ModalContainer
-                title={addMovie.title}
-                isOpen={addMovie.isOpen}
+                title={addMovieModal.title}
+                isOpen={addMovieModal.isOpen}
                 onClose={onClose}
-                id={addMovie.id}>
+                id={addMovieModal.id}>
                 <div className="modal__body">
                     <MovieFormFormik />
                 </div>

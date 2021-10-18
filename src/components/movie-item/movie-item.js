@@ -1,3 +1,4 @@
+import React from "react";
 import PropTypes from "prop-types";
 import "./movie-item.scss";
 import MovieActionBlock from "../movie-action-block";
