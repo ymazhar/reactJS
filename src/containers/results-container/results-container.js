@@ -4,6 +4,7 @@ import MoviesSort from "../../components/movies-sort";
 import {filterByGenres, sortByMovies} from "../../actions/moviesActions";
 import {useDispatch} from "react-redux";
 import {getActiveFilterSelector, getFiltersSelector, getSortByFilterSelector} from "../../selectors/filterSelectors";
+import {useCallback} from "react";
 
 const ResultsContainer = () => {
     const dispatch = useDispatch();
@@ -11,29 +12,19 @@ const ResultsContainer = () => {
     const sortValue = getSortByFilterSelector();
     const activeFilter = getActiveFilterSelector();
 
-
-    // const getParams = () => {
-    //     const sortParam = sortValue.toLowerCase();
-    //     const filterParam = activeFilter.toLowerCase();
-    //     if(activeFilter === 'All') {
-    //         return `sortBy=${sortParam}`;
-    //     }
-    //     return `sortBy=${sortParam}&filter=${filterParam}`
-    // }
-
-    const handleSortBy = (e) => {
+    const handleSortBy = useCallback((e) => {
         if(!e.target.value) {
             return
         }
         dispatch(sortByMovies(e.target.value))
-    }
+    }, [])
 
-    const handleActiveFilter = (e) => {
+    const handleActiveFilter = useCallback((e) => {
         if(!e.target.value) {
             return
         }
         dispatch(filterByGenres(e.target.value))
-    }
+    }, [])
 
     return (
         <div className={"results-container"}>

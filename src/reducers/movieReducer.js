@@ -2,7 +2,7 @@ import {
     GET_MOVIES_ERROR,
     GET_MOVIES_REQUEST,
     GET_MOVIES_SUCCESS, REMOVE_DELETE_MOVIE_ID, REMOVE_EDIT_MOVIE_ID, SET_DELETE_MOVIE_ID, SET_EDIT_MOVIE_ID,
-    SUCCESS_UPDATE_MOVIE, GET_MOVIE_BY_ID_SUCCESS
+    SUCCESS_UPDATE_MOVIE, GET_MOVIE_BY_ID_SUCCESS, SUCCESS_ADDED_MOVIE
 } from "../actions/types";
 
 const initialState = {
@@ -151,6 +151,17 @@ export const movieReducer = (state = initialState, action) => {
                 movies: {
                     ...state.movies,
                     data: movies
+                },
+            }
+        }
+        case SUCCESS_ADDED_MOVIE: {
+            return {
+                ...state,
+                loading: false,
+                movies: {
+                    ...state.movies,
+                    totalAmount: state.movies.totalAmount + 1,
+                    data: [action.payload, ...state.movies.data]
                 },
             }
         }

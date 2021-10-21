@@ -1,3 +1,4 @@
+import React from "react";
 import MovieItem from "../movie-item";
 import "./movie-list.scss";
 import PropTypes from "prop-types";

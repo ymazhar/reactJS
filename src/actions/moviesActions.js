@@ -2,11 +2,12 @@ import {
     GET_MOVIES_ERROR,
     GET_MOVIES_REQUEST,
     GET_MOVIES_SUCCESS, REMOVE_DELETE_MOVIE_ID, REMOVE_EDIT_MOVIE_ID, SET_DELETE_MOVIE_ID, SET_EDIT_MOVIE_ID,
-    SUCCESS_UPDATE_MOVIE, GET_MOVIE_BY_ID_SUCCESS
+    SUCCESS_UPDATE_MOVIE, GET_MOVIE_BY_ID_SUCCESS, SUCCESS_ADDED_MOVIE
 } from "./types";
 import {moviesAPI} from "../services/movie-service";
 import {setActiveFilter, setSortByFilter} from "./filterActions";
 import {getEditMovieIdSelector, getMoviesSelector} from "../selectors/movieSelectors";
+import {hideModalDeleteMovie} from "./modalActions";
 
 const getMoviesRequest = () => ({type: GET_MOVIES_REQUEST});
 
@@ -50,6 +51,24 @@ const setDeleteMovieId = (id) => {
 const removeDeleteMovieId = () => ({type: REMOVE_DELETE_MOVIE_ID});
 
 const successUpdating = (movie) => ({type: SUCCESS_UPDATE_MOVIE, payload: movie})
+const successAddMovie = (movie) => ({type: SUCCESS_ADDED_MOVIE, payload: movie})
+
+const addMovie = movieData => async dispatch => {
+    const movie = {
+        title: movieData.title,
+        release_date: movieData.release_date,
+        poster_path: movieData.poster_path,
+        genres: movieData.genres,
+        overview: movieData.overview,
+        runtime: movieData.runtime,
+    }
+    try {
+        const response = await moviesAPI.addMovie(movie);
+        dispatch(successAddMovie(response.data))
+    } catch (e) {
+        dispatch(getMoviesError(e));
+    }
+}
 
 const updateMovie = movieData => async dispatch => {
     try {
@@ -63,9 +82,11 @@ const updateMovie = movieData => async dispatch => {
 
 const deleteMovie = id => async dispatch => {
     try {
-        dispatch(getMoviesRequest());
         const response = await moviesAPI.deleteMovie(id);
-        dispatch(successUpdating(response.data));
+        console.log(response);
+        if(response.status === 204) {
+            dispatch(hideModalDeleteMovie());
+        }
     } catch(e) {
         dispatch(getMoviesError(e));
     }
@@ -152,5 +173,6 @@ export {
     sortByMovies,
     filterByGenres,
     fetchMovieById,
-    getMovieById
+    getMovieById,
+    addMovie
 }
