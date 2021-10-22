@@ -11,9 +11,9 @@ import {useDispatch} from "react-redux";
 import {
     showModalAddMovie,
 } from "../actions/modalActions";
-import AddMovieContainer from "../containers/add-movie-container";
-import EditMovieContainer from "../containers/edit-movie-container";
-import DeleteMovieContainer from "../containers/delete-movie-container";
+// import AddMovieContainer from "../containers/add-movie-container";
+// import EditMovieContainer from "../containers/edit-movie-container";
+// import DeleteMovieContainer from "../containers/delete-movie-container";
 import SearchContainer from "../containers/search-container";
 
 const HomePage = () => {
@@ -41,9 +41,9 @@ const HomePage = () => {
                     <MainLogo/>
                 </div>
             </MainFooter>
-            <AddMovieContainer />
-            <EditMovieContainer />
-            <DeleteMovieContainer />
+            {/*<AddMovieContainer />*/}
+            {/*<EditMovieContainer />*/}
+            {/*<DeleteMovieContainer />*/}
         </div>
     )
 }

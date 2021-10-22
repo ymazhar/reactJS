@@ -6,9 +6,9 @@ import MainFooter from "../shared/main-footer";
 import MoviesContainer from "../containers/movies-container";
 import ResultsContainer from "../containers/results-container";
 import {useDispatch} from "react-redux";
-import AddMovieContainer from "../containers/add-movie-container";
-import EditMovieContainer from "../containers/edit-movie-container";
-import DeleteMovieContainer from "../containers/delete-movie-container";
+// import AddMovieContainer from "../containers/add-movie-container";
+// import EditMovieContainer from "../containers/edit-movie-container";
+// import DeleteMovieContainer from "../containers/delete-movie-container";
 import MovieDetailInfo from "../components/movie-detail-info";
 import {useHistory, useParams} from "react-router-dom";
 import {useEffect} from "react";
@@ -49,9 +49,9 @@ const FilmPage = () => {
                     <MainLogo/>
                 </div>
             </MainFooter>
-            <AddMovieContainer />
-            <EditMovieContainer />
-            <DeleteMovieContainer />
+            {/*<AddMovieContainer />*/}
+            {/*<EditMovieContainer />*/}
+            {/*<DeleteMovieContainer />*/}
         </div>
     )
 }

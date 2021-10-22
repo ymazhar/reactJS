@@ -11,9 +11,9 @@ import {useDispatch} from "react-redux";
 import {
     showModalAddMovie,
 } from "../actions/modalActions";
-import AddMovieContainer from "../containers/add-movie-container";
-import EditMovieContainer from "../containers/edit-movie-container";
-import DeleteMovieContainer from "../containers/delete-movie-container";
+// import AddMovieContainer from "../containers/add-movie-container";
+// import EditMovieContainer from "../containers/edit-movie-container";
+// import DeleteMovieContainer from "../containers/delete-movie-container";
 import SearchContainer from "../containers/search-container";
 import {useLocation} from "react-router-dom";
 import {useEffect} from "react";
@@ -51,9 +51,9 @@ const SearchPage = () => {
                     <MainLogo/>
                 </div>
             </MainFooter>
-            <AddMovieContainer />
-            <EditMovieContainer />
-            <DeleteMovieContainer />
+            {/*<AddMovieContainer />*/}
+            {/*<EditMovieContainer />*/}
+            {/*<DeleteMovieContainer />*/}
         </div>
     )
 }

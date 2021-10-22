@@ -3,6 +3,7 @@ const fs = require( 'fs' );
 const path = require( 'path' );
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
+const {StaticRouter} = require("react-router-dom");
 
 // создание express приложения
 const app = express();
@@ -20,10 +21,13 @@ let indexHTML = fs.readFileSync( path.resolve( __dirname, '../dist/index.html' )
     encoding: 'utf8',
 } );
 
-let appHTML = ReactDOMServer.renderToString(<App/>);
+let appHTML = ReactDOMServer.renderToString(
+    <StaticRouter location={req.url} context={{}}>
+        <App />
+    </StaticRouter>
+);
 
-indexHTML = indexHTML.replace(`<div id="root"></div><div id="modal-root"></div>`, `<div id="root"></div>
-    <div id="modal-root">${appHTML}</div>`);
+indexHTML = indexHTML.replace(`<div id="root"></div>`, `<div id="root">${appHTML}</div>`);
 
 
 // устанавливаем заголовок и статус
