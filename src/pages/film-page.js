@@ -10,7 +10,7 @@ import AddMovieContainer from "../containers/add-movie-container";
 import EditMovieContainer from "../containers/edit-movie-container";
 import DeleteMovieContainer from "../containers/delete-movie-container";
 import MovieDetailInfo from "../components/movie-detail-info";
-import {useHistory, useParams} from "react-router";
+import {useHistory, useParams} from "react-router-dom";
 import {useEffect} from "react";
 import {fetchMovieById} from "../actions/moviesActions";
 import {getFilmItemSelector} from "../selectors/movieSelectors";

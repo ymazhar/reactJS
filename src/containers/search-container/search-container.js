@@ -1,6 +1,6 @@
 import SearchForm from "../../components/search-form";
 import {useFormik} from "formik";
-import {useHistory} from "react-router";
+import {useHistory} from "react-router-dom";
 
 const SearchContainer = () => {
     const history = useHistory();

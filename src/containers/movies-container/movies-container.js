@@ -19,7 +19,7 @@ import {
     getMoviesTotalCountSelector
 } from "../../selectors/movieSelectors";
 import NoMovieFound from "../../components/no-movie-found";
-import {useHistory} from "react-router";
+import {useHistory} from "react-router-dom";
 import {useCallback} from "react";
 
 const MoviesContainer = () => {
